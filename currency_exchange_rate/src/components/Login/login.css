@@ -1,0 +1,12 @@
+.form2{
+    width: 200px;
+    gap: 40px;
+    padding-left: 40%;
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+}
+
+.logDiv{
+   border: 1px solid black;
+   padding: 50px;
+}
