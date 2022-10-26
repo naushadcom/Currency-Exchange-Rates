@@ -1,6 +1,14 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import "./login.css";
+import { Link, useNavigate } from "react-router-dom";
+import {
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+  FormHelperText,
+  Input,
+  Box,
+  Heading,
+} from "@chakra-ui/react";
 
 function Login() {
 
@@ -33,20 +41,39 @@ function Login() {
 
   return (
     <div>
-      <h1>Login</h1>
-      <form className="form2">
-        <div className="logDiv">
-          <input
+      <Heading style={{marginTop:"50px"}}>Login</Heading>
+      <FormControl style={{ width: "50%", margin: "auto",marginTop:"20px",boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",padding:"40px" }}>
+        <Box>
+        <FormLabel>Email</FormLabel>
+          <Input
             placeholder="Email"
             onChange={(e) => setEmail(e.target.value)}
           />
-          <input
+          <FormLabel>Password</FormLabel>
+          <Input
             placeholder="Password"
             onChange={(e) => setPassword(e.target.value)}
           />
-          <input type="submit" onClick={handleClick} />
-        </div>
-      </form>
+          <Input  style={{
+              backgroundColor: "green",
+              fontWeight: "bold",
+              color: "white",
+              marginTop: "30px",
+            }} type="submit" onClick={handleClick} />
+        </Box>
+        <FormHelperText>
+        We'll never share your Credential.{" "}
+          <Link
+            to={"/signup"}
+            style={{
+              textDecoration: "underline",
+              color: "blue",
+            }}
+          >
+            Singup Here
+          </Link>
+        </FormHelperText>
+      </FormControl>
     </div>
   );
 }

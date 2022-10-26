@@ -1,6 +1,15 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import "./signup.css";
+import { Link, useNavigate } from "react-router-dom";
+import {
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+  FormHelperText,
+  Input,
+  Box,
+  Heading,
+} from "@chakra-ui/react";
+// import "./signup.css";
 function Signup() {
   let cridential = JSON.parse(localStorage.getItem("cridentialData")) || [];
   const navigate = useNavigate();
@@ -21,21 +30,46 @@ function Signup() {
 
   return (
     <div>
-      <h1>Sign up</h1>
-      <form className="form">
-        <div className="signDiv">
-          <input placeholder="Name" onChange={(e) => setName(e.target.value)} />
-          <input
+      <Heading style={{marginTop:"50px"}}>Sign up</Heading>
+      <FormControl style={{ width: "50%", margin: "auto",marginTop:"20px",boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",padding:"40px" }}>
+        <Box>
+          <FormLabel>Name</FormLabel>
+          <Input placeholder="Name" onChange={(e) => setName(e.target.value)} />
+          <FormLabel>Email address</FormLabel>
+          <Input
             placeholder="Email"
             onChange={(e) => setEmail(e.target.value)}
           />
-          <input
+          <FormLabel>Password</FormLabel>
+          <Input
             placeholder="Password"
             onChange={(e) => setPassword(e.target.value)}
           />
-          <input type="submit" onClick={handleClick} />
-        </div>
-      </form>
+          <br />
+          <Input
+            style={{
+              backgroundColor: "green",
+              fontWeight: "bold",
+              color: "white",
+              marginTop: "30px",
+            }}
+            type="submit"
+            onClick={handleClick}
+          />
+        </Box>
+        <FormHelperText>
+          Already have an account ?{" "}
+          <Link
+            to={"/login"}
+            style={{
+              textDecoration: "underline",
+              color: "blue",
+            }}
+          >
+            Login Here
+          </Link>
+        </FormHelperText>
+      </FormControl>
     </div>
   );
 }
